@@ -1,0 +1,20 @@
+#open a new Google Colab ipython notebook and import the libraries we require
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px ### for plotting the data on world map
+
+path = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/05-25-2020.csv'
+df = pd.read_csv(path)
+df.info()
+df.head()
+
+#Top 20 countries with maximum number of confirmed cases
+top_20 = world.sort_values(by=['Confirmed'], ascending=False).head(20)
+### Generate a Barplot
+plt.figure(figsize=(12,10))
+plot = sns.barplot(top_20['Confirmed'], top_20['Country'])
+for i,(value,name) in enumerate(zip(top_20['Confirmed'],top_20['Country'])):
+    plot.text(value,i-0.05,f'{value:,.0f}',size=10)
+plt.show()
