@@ -1,0 +1,31 @@
+#Open the input file using using the open() function and pass in the flag -r to open in reading mode.
+Open an output file, using the -w flag, where we would store the contents of file after deleting all repeated lines from it.
+Using the set() method keep track of all the lines seen so far, so that we can compare it with the current reading line.
+Now, iterate over each line of input file and compare it with the lines seen so far.
+If the current line is also present in lines seen so far, then skip that line else write that line to the output file, and don’t forget to add the current line to the lines seen so far.
+Close the files.
+
+# creating the output file
+outputFile = open('C:/Users/user/Desktop/Lorem_output.txt', "w")
+
+# reading the input file
+inputFile = open('C:/Users/user/Desktop/Lorem_input.txt', "r")
+
+# holds lines already seen
+lines_seen_so_far = set()
+
+# iterating each line in the file
+for line in inputFile:
+
+	# checking if line is unique
+	if line not in lines_seen_so_far:
+
+		# write unique lines in output file
+		outputFile.write(line)
+
+		# adds unique lines to lines_seen_so_far
+		lines_seen_so_far.add(line)		
+
+# closing the file
+inputFile.close()
+outputFile.close()
