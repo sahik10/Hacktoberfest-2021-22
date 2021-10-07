@@ -1,0 +1,30 @@
+Import the re module for regular expression.
+Open the file using the open() function.
+Read all the lines in the file and store them in a list.
+Declare the patter for IP addresses. The regex pattern is : 
+ 
+r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
+For every element of the list search for the patter using the search() function, store the IP addresses in a list.
+Display the list containing the IP addresses.
+
+
+
+# importing the module
+import re
+
+# opening and reading the file
+with open('C:/Users/user/Desktop/New Text Document.txt') as fh:
+fstring = fh.readlines()
+
+# declaring the regex pattern for IP addresses
+pattern = re.compile(r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})')
+
+# initializing the list object
+lst=[]
+
+# extracting the IP addresses
+for line in fstring:
+lst.append(pattern.search(line)[0])
+
+# displaying the extracted IP addresses
+print(lst)
